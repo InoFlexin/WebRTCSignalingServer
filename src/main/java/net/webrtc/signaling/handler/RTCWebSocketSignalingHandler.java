@@ -20,14 +20,16 @@ public class RTCWebSocketSignalingHandler extends ChannelInboundHandlerAdapter {
         if(msg instanceof WebSocketFrame) {
             System.out.println("frame:" + msg);
             System.out.println("size:" + channelGroup.size());
-            TextWebSocketFrame textWebSocketFrame = (TextWebSocketFrame) msg;
+            if(msg instanceof  TextWebSocketFrame) {
+                TextWebSocketFrame textWebSocketFrame = (TextWebSocketFrame) msg;
 
-            for(Channel channel : channelGroup) {
-                if(channel.equals(ctx.channel())) {
-                    continue;
+                for (Channel channel : channelGroup) {
+                    if (channel.equals(ctx.channel())) {
+                        continue;
+                    }
+
+                    channel.writeAndFlush(textWebSocketFrame.copy());
                 }
-
-                channel.writeAndFlush(textWebSocketFrame.copy());
             }
         }
     }
