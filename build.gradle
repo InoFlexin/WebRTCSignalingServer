@@ -9,6 +9,17 @@ repositories {
     mavenCentral()
 }
 
+sourceSets {
+    main {
+        java {
+            srcDirs = ['src/main/java']
+        }
+        resources {
+            srcDirs = ['src/main/resources']
+        }
+    }
+}
+
 jar {
     manifest {
         attributes  'Title': 'Webgl-Minecraft-Game-Server', 'Version': '0.0.1-SNAPSHOT', 'Main-Class': 'net.webrtc.signaling.Server'

@@ -1,0 +1,5 @@
+Manifest-Version: 1.0
+Title: Webgl-Minecraft-Game-Server
+Version: 0.0.1-SNAPSHOT
+Main-Class: net.webrtc.signaling.Server
+

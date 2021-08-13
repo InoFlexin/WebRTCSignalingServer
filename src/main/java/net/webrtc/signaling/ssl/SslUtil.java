@@ -6,8 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.net.ssl.SSLException;
-import java.io.File;
-import java.io.InputStream;
+import java.io.*;
 
 @NoArgsConstructor
 @Getter
@@ -24,11 +23,22 @@ public class SslUtil {
     public void load() {
         ClassLoader classLoader = getClassLoader();
         certificationFile = new File(
-                classLoader.getResource("netty.crt").getFile()
+                getClass().getResource("/netty.crt").getFile()
         );
         pkcs8KeyFile = new File(
-                classLoader.getResource("privatekey.pem").getFile()
+                getClass().getResource("/privatekey.pem").getFile()
         );
+
+        if(!certificationFile.exists() && !pkcs8KeyFile.exists()) {
+            loadAtWorkingDirectory();
+        }
+    }
+
+    private void loadAtWorkingDirectory() {
+        final String workDirPath = System.getProperty("user.dir");
+
+        certificationFile = new File(workDirPath + "/pems/netty.crt");
+        pkcs8KeyFile = new File(workDirPath + "/pems/privatekey.pem");
     }
 
     public SslContext getSslContext() {
