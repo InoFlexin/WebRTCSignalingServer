@@ -25,7 +25,8 @@ public class RTCWebSocketSignalingHandler extends ChannelInboundHandlerAdapter {
                     continue;
                 }
 
-                channel.write(textWebSocketFrame);
+                System.out.println(textWebSocketFrame.text());
+                channel.writeAndFlush(textWebSocketFrame);
             }
         }
     }
