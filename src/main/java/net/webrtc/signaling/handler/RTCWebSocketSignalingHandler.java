@@ -19,6 +19,7 @@ public class RTCWebSocketSignalingHandler extends ChannelInboundHandlerAdapter {
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
         if(msg instanceof WebSocketFrame) {
             System.out.println("frame:" + msg);
+            System.out.println("size:" + channelGroup.size());
             TextWebSocketFrame textWebSocketFrame = (TextWebSocketFrame) msg;
 
             for(Channel channel : channelGroup) {
