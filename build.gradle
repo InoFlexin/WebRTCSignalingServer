@@ -11,7 +11,7 @@ repositories {
 
 jar {
     manifest {
-        attributes  'Title': 'Webgl-Minecraft-Game-Server', 'Version': '0.0.1-SNAPSHOT', 'Main-Class': 'net.metaclass.Server'
+        attributes  'Title': 'Webgl-Minecraft-Game-Server', 'Version': '0.0.1-SNAPSHOT', 'Main-Class': 'net.webrtc.signaling.Server'
     }
     archiveName 'WebRTC-Signaling.jar'
     dependsOn configurations.runtime
