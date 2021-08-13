@@ -20,6 +20,7 @@ public class HttpServerHandler extends ChannelInboundHandlerAdapter {
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
         channelGroup.add(ctx.channel());
+        System.out.println("added: " + ctx.channel());
     }
 
     @Override
